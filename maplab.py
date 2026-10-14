@@ -13,5 +13,25 @@ raspuns= requests.get(url, params={
     'lon':26.898324,
     'appid': cheie_api_openweather
     }).json()
-print (raspuns)
+#print (raspuns)
+
+
+url_geocoding ="https://api.openweathermap.org/geo/1.0/direct?"
+lat=raspuns_geocoding[0]['lat']
+lat=raspuns_geocoding[0]['lon']
+rapuns_geocoding = requests.get(url_geocoding, params={
+    'lat': lat,
+    'lon':lon,
+    'appid': cheie_api_openweather,
+    'units':'metric',
+    'lang':'ro'
+    
+})
+
+starea_vremii=raspuns['weather'][0]['description']
+temperatura = raspuns['main']['temp']
+viteza_vant = raspuns['wind']['speed']
+
+print(f"In {oras} sunt {temperatura} grade")
+
 #print(cheie_api_openweather)
